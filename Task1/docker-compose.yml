@@ -1,0 +1,31 @@
+version: "3"
+services:
+  eclipse-temurin:
+    image: eclipse-temurin:latest
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "9443:443"
+    volumes:
+      - "nginx.conf:/etc/nginx/nginx.conf"
+      - "self-signed.crt:/etc/ssl/private/self-signed.crt"
+      - "self-signed.key:/etc/ssl/private/self-signed.key"
+    depends_on:
+      - eclipse-temurin
+
+# Firstly, I create a docker-compose.yaml file.
+
+# In the docker-compose.yaml file, I define two services, nginx and eclipse-temurin.
+
+# For the nginx service, I use the official nginx image from Docker Hub.
+
+#In the service configuration, I configure it to expose port 443 to the host at port 9443.
+
+# For the eclipse-temurin service, I use the official eclipse-temurin image from Docker Hub.
+
+# In the nginx service configuration, I set up the nginx to use eclipse-temurin service.
+
+# For self-signed certificate, I use openssl command to generate it.
+
+# After creating the docker-compose.yaml file, I use the docker-compose up command to start the services defined in the file.
